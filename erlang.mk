@@ -5772,20 +5772,6 @@ link_verbose = $(link_verbose_$(V))
 
 # Targets.
 
-ifeq ($(wildcard $(C_SRC_DIR)),)
-else ifneq ($(wildcard $(C_SRC_DIR)/Makefile),)
-app:: app-c_src
-
-test-build:: app-c_src
-
-app-c_src:
-	$(MAKE) -C $(C_SRC_DIR)
-
-clean::
-	$(MAKE) -C $(C_SRC_DIR) clean
-
-else
-
 ifeq ($(SOURCES),)
 SOURCES := $(sort $(foreach pat,*.c *.C *.cc *.cpp,$(call core_find,$(C_SRC_DIR)/,$(pat))))
 endif
@@ -5820,8 +5806,6 @@ clean:: clean-c_src
 
 clean-c_src:
 	$(gen_verbose) rm -f $(C_SRC_OUTPUT_FILE) $(OBJECTS)
-
-endif
 
 ifneq ($(wildcard $(C_SRC_DIR)),)
 $(C_SRC_ENV):
