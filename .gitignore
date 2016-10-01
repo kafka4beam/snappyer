@@ -7,4 +7,5 @@ ebin/
 .rebar
 .deps
 *.crashdump
+_build/
 
