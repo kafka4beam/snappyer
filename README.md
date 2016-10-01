@@ -25,5 +25,7 @@ make eunit
 
 ## Versioning
 
+```
 <snappy-version>-<erlang-nif-version>
+```
 
