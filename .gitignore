@@ -6,3 +6,5 @@ ebin/
 *.beam
 .rebar
 .deps
+*.crashdump
+

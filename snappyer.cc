@@ -19,12 +19,8 @@
 #include <cstring>
 
 #include "erl_nif_compat.h"
-#include "snappy/snappy.h"
-#include "snappy/snappy-sinksource.h"
-
-#ifdef OTP_R13B03
-#error OTP R13B03 not supported. Upgrade to R13B04 or later.
-#endif
+#include "snappy.h"
+#include "snappy-sinksource.h"
 
 #ifdef __cplusplus
 #define BEGIN_C extern "C" {
@@ -41,7 +37,7 @@ class SnappyNifSink : public snappy::Sink
     public:
         SnappyNifSink(ErlNifEnv* e);
         ~SnappyNifSink();
-        
+
         void Append(const char* data, size_t n);
         char* GetAppendBuffer(size_t len, char* scratch);
         ErlNifBinary& getBin();
@@ -80,7 +76,7 @@ char*
 SnappyNifSink::GetAppendBuffer(size_t len, char* scratch)
 {
     size_t sz;
-    
+
     if((length + len) > bin.size) {
         sz = (len * 4) < 8192 ? 8192 : (len * 4);
 
@@ -278,7 +274,7 @@ static ErlNifFunc nif_functions[] = {
 };
 
 
-ERL_NIF_INIT(snappy, nif_functions, &on_load, &on_reload, &on_upgrade, NULL);
+ERL_NIF_INIT(snappyer, nif_functions, &on_load, &on_reload, &on_upgrade, NULL);
 
 
 END_C

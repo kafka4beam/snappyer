@@ -1,0 +1,19 @@
+{ application
+, snappyer
+, [ {description,"Snappy as nif for Erlang"}
+  , {vsn,"1.1.3-1.0.0"}
+  , {registered,[]}
+  , {applications,[kernel,stdlib]}
+  , {env,[]}
+  , {modules,[snappyer]}
+  , {licenses,["Apache License 2.0"]}
+  , {links,[{"Github","https://github.com/zmstone/snappyer.git"}]}
+  , {build_tools,["make","rebar3"]}
+  , {files,["COPYING","erl_nif_compat.h","rebar.config","rebar.lock",
+            "snappyer.cc", "snappy-internal.h","snappy-sinksource.h",
+            "snappy-stubs-internal.h","src", "erlang.mk","Makefile",
+            "README.md","snappy.cc","snappy.h","snappy-sinksource.cc",
+            "snappy-stubs-internal.cc","snappy-stubs-public.h"]}
+  ]
+}.
+
