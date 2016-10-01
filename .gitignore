@@ -1,0 +1,8 @@
+env.mk
+*.o
+ebin/
+*.d
+*.so
+*.beam
+.rebar
+.deps
