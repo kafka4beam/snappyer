@@ -1,14 +1,14 @@
 { application
 , snappyer
 , [ {description,"Snappy as nif for Erlang"}
-  , {vsn,"1.1.3-1.0.2"}
+  , {vsn,"1.1.3-1.0.3"}
   , {registered,[]}
   , {applications,[kernel,stdlib]}
   , {env,[]}
   , {modules,[snappyer]}
   , {licenses,["Apache License 2.0"]}
   , {links,[{"Github","https://github.com/zmstone/snappyer.git"}]}
-  , {build_tools,["make","rebar3"]}
+  , {build_tools,["make","rebar","rebar3"]}
   , {files,["COPYING","c_src/*.h","c_src/*.cc", "rebar.config",
             "rebar.lock", "src", "erlang.mk","Makefile", "README.md"]}
   ]
