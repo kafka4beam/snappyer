@@ -25,7 +25,8 @@ decompression_test_() ->
 
 
 compression() ->
-    DataIoList = lists:duplicate(11, <<"words that go unspoken, deeds that go undone">>),
+    DataIoList =
+      lists:duplicate(11, <<"words that go unspoken, deeds that go undone">>),
     Data = iolist_to_binary(DataIoList),
     Result = snappyer:compress(Data),
     ?assertMatch({ok, _}, Result),
@@ -36,7 +37,8 @@ compression() ->
     ?assertEqual(true, snappyer:is_valid(Compressed)),
     ?assertEqual(false, snappyer:is_valid(Data)),
     ?assertEqual(false, snappyer:is_valid(<<"foobar123">>)),
-    ?assertEqual({ok, byte_size(Data)}, snappyer:uncompressed_length(Compressed)),
+    ?assertEqual({ok, byte_size(Data)},
+                 snappyer:uncompressed_length(Compressed)),
 
     Result2 = snappyer:compress(DataIoList),
     ?assertMatch({ok, _}, Result2),
@@ -44,12 +46,14 @@ compression() ->
 
     ?assertEqual(byte_size(Compressed2), byte_size(Compressed)),
     ?assertEqual(true, snappyer:is_valid(Compressed2)),
-    ?assertEqual({ok, byte_size(Data)}, snappyer:uncompressed_length(Compressed2)),
+    ?assertEqual({ok, byte_size(Data)},
+                 snappyer:uncompressed_length(Compressed2)),
     ok.
 
 
 decompression() ->
-    DataIoList = lists:duplicate(11, <<"words that go unspoken, deeds that go undone">>),
+    DataIoList =
+      lists:duplicate(11, <<"words that go unspoken, deeds that go undone">>),
     Data = iolist_to_binary(DataIoList),
     Result = snappyer:compress(Data),
     ?assertMatch({ok, _}, Result),
