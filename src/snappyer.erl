@@ -20,6 +20,7 @@
 
 -on_load(init/0).
 
+-spec init() -> ok.
 init() ->
   PrivDir =
     case code:priv_dir(?APPLICATION) of
@@ -40,17 +41,19 @@ init() ->
     _        -> ok
   end.
 
+-spec compress(iodata()) -> {ok, binary()} | no_return().
 compress(_IoList) ->
-    exit(snappy_nif_not_loaded).
+  erlang:nif_error(snappy_nif_not_loaded).
 
-
+-spec decompress(iodata()) -> {ok, binary()} | no_return().
 decompress(_IoList) ->
-    exit(snappy_nif_not_loaded).
+  erlang:nif_error(snappy_nif_not_loaded).
 
-
+-spec uncompressed_length(iodata()) -> non_neg_integer() | no_return().
 uncompressed_length(_IoList) ->
-    exit(snappy_nif_not_loaded).
+  erlang:nif_error(snappy_nif_not_loaded).
 
-
+-spec is_valid(iodata()) -> boolean() | no_return().
 is_valid(_IoList) ->
-    exit(snappy_nif_not_loaded).
+  erlang:nif_error(snappy_nif_not_loaded).
+

@@ -1,6 +1,6 @@
 PROJECT = snappyer
 PROJECT_DESCRIPTION = Snappy as nif for Erlang
-PROJECT_VERSION = 1.1.3-1.0.4
+PROJECT_VERSION = 1.1.3-1.0.5
 
 ERLC_OPTS += -DAPPLICATION=$(PROJECT)
 TEST_ERLC_OPTS += -DAPPLICATION=$(PROJECT)
@@ -21,3 +21,5 @@ include erlang.mk
 vsn-check:
 	$(verbose) ./vsn-check.sh $(PROJECT_VERSION)
 
+hex-publish: distclean
+	rebar3 hex publish
