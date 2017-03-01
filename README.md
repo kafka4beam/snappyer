@@ -22,3 +22,11 @@ Erlang nif support copied from: https://github.com/fdmanana/snappy-erlang-nif
 make eunit
 
 ```
+
+## Versioning
+
+| Snappyer Version | Google/Snappy Version |
+| ---------------- | --------------------- |
+| 1.1.3-1.0.x      | 1.1.3                 |
+| 1.2.x            | 1.1.3                 |
+
