@@ -20,6 +20,10 @@
 
 -on_load(init/0).
 
+-ifndef(APPLICATION).
+-define(APPLICATION, snappyer).
+-endif.
+
 -spec init() -> ok.
 init() ->
   PrivDir =
