@@ -1,6 +1,6 @@
 PROJECT = snappyer
 PROJECT_DESCRIPTION = Snappy as nif for Erlang
-PROJECT_VERSION = 1.2.3
+PROJECT_VERSION = 1.2.4
 
 SP = 2
 

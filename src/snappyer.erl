@@ -26,24 +26,8 @@
 
 -spec init() -> ok.
 init() ->
-  PrivDir =
-    case code:priv_dir(?APPLICATION) of
-      {error, bad_name} ->
-        {ok, Cwd} = file:get_cwd(),
-        Priv = filename:join([Cwd, "..", "priv"]),
-        case filelib:is_dir(Priv) of
-          true  -> Priv;
-          false -> filename:join(Cwd, "priv")
-        end;
-      Dir ->
-        Dir
-    end,
-  SoName = filename:join([PrivDir, ?APPLICATION]),
-  _ = erlang:load_nif(SoName, 0),
-  case erlang:system_info(otp_release) of
-    "R13B03" -> true;
-    _        -> ok
-  end.
+  _ = erlang:load_nif(so_path(), 0),
+  ok.
 
 -spec compress(iodata()) -> {ok, binary()} | no_return().
 compress(_IoList) ->
@@ -61,3 +45,22 @@ uncompressed_length(_IoList) ->
 is_valid(_IoList) ->
   erlang:nif_error(snappy_nif_not_loaded).
 
+so_path() ->
+  filename:join([get_nif_bin_dir(), "snappyer"]).
+
+get_nif_bin_dir() ->
+  {ok, Cwd} = file:get_cwd(),
+  get_nif_bin_dir(
+    [ code:priv_dir(?APPLICATION)
+    , filename:join([Cwd, "..", "priv"])
+    , filename:join(Cwd, "priv")
+    , os:getenv("NIF_BIN_DIR")
+    ]).
+
+get_nif_bin_dir([]) -> erlang:error(snappyer_nif_not_found);
+get_nif_bin_dir([false | Rest]) -> get_nif_bin_dir(Rest);
+get_nif_bin_dir([Dir | Rest]) ->
+  case filelib:wildcard(filename:join([Dir, "snappyer.*"])) of
+    [] -> get_nif_bin_dir(Rest);
+    [_ | _] -> Dir
+  end.
