@@ -10,3 +10,4 @@ ebin/
 _build/
 rebar.lock
 .erlang.mk
+TEST-file*.xml
