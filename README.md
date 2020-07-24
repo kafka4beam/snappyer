@@ -16,10 +16,17 @@ Erlang nif support copied from: https://github.com/fdmanana/snappy-erlang-nif
 
 ```
 
+## Compilation
+
+```
+make compile
+
+```
+
 ## Tests
 
 ```
-make eunit
+make tests
 
 ```
 

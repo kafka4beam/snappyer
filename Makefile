@@ -3,7 +3,7 @@
 all: compile
 
 compile:
-	@rebar3 compile
+	@rebar3 compile -v
 
 tests:
 	@rebar3 eunit -v
