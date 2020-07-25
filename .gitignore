@@ -12,3 +12,11 @@ rebar.lock
 .erlang.mk
 TEST-file*.xml
 .tool-versions
+# Editors.
+*.sw*
+.vscode
+.DS_Store
+
+# Build directory.
+build/
+out/

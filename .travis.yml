@@ -11,4 +11,3 @@ script:
   - chmod 755 rebar3
   - ./rebar3 compile
   - ./rebar3 eunit -v
-
