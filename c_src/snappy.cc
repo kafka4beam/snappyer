@@ -74,6 +74,10 @@
 #include <string>
 #include <vector>
 
+#if defined(_MSC_VER)
+#include <BaseTsd.h>
+#endif
+
 namespace snappy {
 
 using internal::COPY_1_BYTE_OFFSET;
