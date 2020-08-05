@@ -29,19 +29,19 @@ init() ->
   _ = erlang:load_nif(so_path(), 0),
   ok.
 
--spec compress(iodata()) -> {ok, binary()} | no_return().
+-spec compress(iodata()) -> {ok, binary()} | {error, binary()}.
 compress(_IoList) ->
   erlang:nif_error(snappy_nif_not_loaded).
 
--spec decompress(iodata()) -> {ok, binary()} | no_return().
+-spec decompress(iodata()) -> {ok, binary()} | {error, binary()}.
 decompress(_IoList) ->
   erlang:nif_error(snappy_nif_not_loaded).
 
--spec uncompressed_length(iodata()) -> non_neg_integer() | no_return().
+-spec uncompressed_length(iodata()) -> {ok, non_neg_integer()} | {error, binary()}.
 uncompressed_length(_IoList) ->
   erlang:nif_error(snappy_nif_not_loaded).
 
--spec is_valid(iodata()) -> boolean() | no_return().
+-spec is_valid(iodata()) -> boolean() | {error, binary()}.
 is_valid(_IoList) ->
   erlang:nif_error(snappy_nif_not_loaded).
 
